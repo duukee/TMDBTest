@@ -1,0 +1,68 @@
+# Github Gitignore
+
+### Xcode ###
+
+## Build generated
+build/
+DerivedData/
+
+
+## Various settings
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata/
+*.xccheckout
+
+## Other
+*.moved-aside
+*.xccheckout
+*.xcscmblueprint
+*.xcuserstate
+
+
+## Obj-C/Swift specific
+*.hmap
+*.ipa
+*.app*
+*dSYM*
+
+
+## AppCode
+**/.idea/workspace.xml
+**/.idea/tasks.xml
+**/.idea/*.iws
+
+
+## CocoaPods = ALL PODS ON SOURCE CONTROL!!
+#
+# adding the Pods directory to your .gitignore ?
+# you should judge for yourself, the pros and cons are mentioned at:
+# http://guides.cocoapods.org/using/using-cocoapods.html#should-i-ignore-the-pods-directory-in-source-control
+#
+Podfile.lock
+Pods/
+DXCmoviesApp.xcworkspace/
+
+## fastlane
+#
+# It is recommended to not store the screenshots in the git repo. Instead, use fastlane to re-generate the
+# screenshots whenever they are needed.
+# For more information about the recommended setup visit:
+# https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Gitignore.md
+
+Gemfile.lock
+fastlane/report.xml
+fastlane/certificates
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/last_screenshots
+fastlane/test_output
+
+## Finder
+*.DS_Store
