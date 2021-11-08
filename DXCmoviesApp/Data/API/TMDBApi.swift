@@ -47,8 +47,7 @@ extension TMDBApi: TargetType {
         
         // Marvel API Hash for authorization
         let authParams = [TMDBApiConstants.Params.apikey: TMDBApiConstants.Auth.apiKey]
-        
-        let language = Locale.current.identifier.replacingOccurrences(of: "_", with: "-")
+        let language = Locale.preferredLanguages[0]
         
         switch self {
         case .popularMovies(let page):
