@@ -12,7 +12,7 @@ struct Movie : Codable {
     let title : String?
     let originalTitle : String?
     let overview : String?
-    let voteAverage : Double?
+    let voteAverage : Double
     let resourceURI : String?
     
     enum CodingKeys: String, CodingKey {
