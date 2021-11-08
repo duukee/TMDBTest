@@ -23,14 +23,20 @@ class MovieTableViewCell: UITableViewCell, NibReusable {
         super.awakeFromNib()
     }
 
+    override public func prepareForReuse() {
+        averageView.prepareForReuse()
+    }
     
     func set(cover: String?, title: String?, overview: String?, average: Double) {
         titleLabel.textAlignment = .left
         titleLabel.text = title
         overviewLabel.text = overview
         overviewLabel.sizeToFit()
+        overviewLabel.numberOfLines = 0
         averageView.rating = average
-                
+        averageView.settings.updateOnTouch = false
+        
+        //base_url": "http://image.tmdb.org/t/p/"
     }
 
     

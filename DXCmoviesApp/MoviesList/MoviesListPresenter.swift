@@ -41,7 +41,7 @@ class MoviesListPresenter: MoviesListPresenterProtocol {
             do {
                 print(try response.mapJSON())
                 let movies: [Movie] = try response.map(ListResponse<Movie>.self).results
-                print(movies)
+                //print(movies)
                 self.movies.append(contentsOf: movies)
                 self.view?.updateViewState(with: .ready)
                 self.page += 1

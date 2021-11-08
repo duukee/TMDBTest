@@ -47,6 +47,7 @@ class MoviesListViewController: UIViewController, MoviesListViewProtocol, NibOwn
         presenter.viewDidLoad()
     }
     
+    //MARK: View Configuration
     func configureView() {
         configureAlertView()
         configureTableView()
@@ -73,6 +74,7 @@ class MoviesListViewController: UIViewController, MoviesListViewProtocol, NibOwn
         tableView.refreshControl = refreshControl
     }
 
+    //Pull to refresh
     @objc func reloadData(refreshControl: UIRefreshControl){
         presenter.reloadMovies()
         refreshControl.endRefreshing()
@@ -134,12 +136,13 @@ class MoviesListViewController: UIViewController, MoviesListViewProtocol, NibOwn
 
 // MARK: - TableView Delegate
 extension MoviesListViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let detailsVC: MovieDetailViewController = CharacterDetailViewController.getConfiguredInstance()
-//        // TODO: Improve
-//        detailsVC.character = presenter.movies[indexPath.row]
-//        present(detailsVC, animated: true, completion: nil)
-//        tableView.deselectRow(at: indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
