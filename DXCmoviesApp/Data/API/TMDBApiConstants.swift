@@ -15,7 +15,7 @@ struct TMDBApiConstants {
     
     enum Endpoints {
         static let baseURL = "https://api.themoviedb.org/3"
-
+        static let imagesURL = "https://image.tmdb.org/t/p/w500"
         static let popularMovies = "/movie/popular"
         static let movieDetails = "/movie/%@"
     }

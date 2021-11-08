@@ -25,6 +25,7 @@ class MovieTableViewCell: UITableViewCell, NibReusable {
 
     override public func prepareForReuse() {
         averageView.prepareForReuse()
+        coverImageView.image = nil
     }
     
     func set(cover: String?, title: String?, overview: String?, average: Double) {
@@ -36,7 +37,11 @@ class MovieTableViewCell: UITableViewCell, NibReusable {
         averageView.rating = average
         averageView.settings.updateOnTouch = false
         
-        //base_url": "http://image.tmdb.org/t/p/"
+        if (cover != nil) {
+            let coverString = TMDBApiConstants.Endpoints.imagesURL + cover!
+            let coverURL: URL = URL.init(string: coverString)!
+            coverImageView.af.setImage(withURL: coverURL)
+        }
     }
 
     
