@@ -20,6 +20,9 @@ def common_pods
     ### Helpers
     # Reusable components
     pod 'Reusable', '~> 4.1'
+    
+    ### Rating with stars
+    pod 'Cosmos', '~> 23.0'
 
     ### ------------ Firebase ------------
     # Analytics without IDFA collection capability, use this pod instead

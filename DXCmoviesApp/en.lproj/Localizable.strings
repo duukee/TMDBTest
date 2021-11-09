@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  DXCmoviesApp
+
+  Created by Alex Zaragoza Chazarra on 9/11/21.
+  
+*/
+
+"title" = "Top Movies";
+"refresh" = "Refreshing Movies";
+"loading_movies" = "Getting movies...";
+"loading_error" = "Something went wrong!\nTap to try again.";
+"no_data" = "NOTHING TO SHOW";

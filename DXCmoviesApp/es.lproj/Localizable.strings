@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  DXCmoviesApp
+
+  Created by Alex Zaragoza Chazarra on 9/11/21.
+  
+*/
+
+"title" = "Películas Destacadas";
+"refresh" = "Actualizando películas";
+"loading_movies" = "Obteniendo películas...";
+"loading_error" = "Algo salió mal!\nToca para intentar de nuevo.";
+"no_data" = "NADA QUE MOSTRAR";
