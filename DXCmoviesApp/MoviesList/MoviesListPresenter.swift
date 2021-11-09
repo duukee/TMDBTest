@@ -13,7 +13,7 @@ import Moya
 // MARK: Presenter -
 protocol MoviesListPresenterProtocol: AnyObject {
 	var view: MoviesListViewProtocol? { get set }
-    func viewDidLoad()
+    func prepare()
     func loadMovies(page: Int)
     func reloadMovies()
     func loadMore()
@@ -25,7 +25,7 @@ class MoviesListPresenter: MoviesListPresenterProtocol {
     var movies: [Movie] = []
     var page: Int = 1
 
-    func viewDidLoad() {
+    func prepare() {
         reloadMovies()
     }
     

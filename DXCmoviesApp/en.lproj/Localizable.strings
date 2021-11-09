@@ -11,3 +11,5 @@
 "loading_movies" = "Getting movies...";
 "loading_error" = "Something went wrong!\nTap to try again.";
 "no_data" = "NOTHING TO SHOW";
+"rating" = "Rating:";
+"overview" = "Overview:";

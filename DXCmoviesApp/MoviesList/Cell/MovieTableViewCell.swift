@@ -37,8 +37,8 @@ class MovieTableViewCell: UITableViewCell, NibReusable {
         averageView.rating = average
         averageView.settings.updateOnTouch = false
         
-        if (cover != nil) {
-            let coverString = TMDBApiConstants.Endpoints.imagesURL + cover!
+        if let cover = cover {
+            let coverString = TMDBApiConstants.Endpoints.imagesURL + cover
             let coverURL: URL = URL.init(string: coverString)!
             coverImageView.af.setImage(withURL: coverURL)
         }

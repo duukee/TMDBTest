@@ -44,7 +44,7 @@ class MoviesListViewController: UIViewController, MoviesListViewProtocol, NibOwn
         super.viewDidLoad()
         configureView()
         presenter.view = self
-        presenter.viewDidLoad()
+        presenter.prepare()
     }
     
     //MARK: View Configuration
@@ -143,6 +143,9 @@ extension MoviesListViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailsVC: MovieDetailViewController = MovieDetailViewController.getConfiguredInstance()
+        detailsVC.presenter.movie = presenter.movies[indexPath.row]
+        present(detailsVC, animated: true, completion: nil)
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }
