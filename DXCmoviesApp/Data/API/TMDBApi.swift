@@ -15,7 +15,7 @@ public enum TMDBApi {
 
 extension TMDBApi: TargetType {
     
-    // Base Marvel Service URL
+    // Base Service URL
     public var baseURL: URL {
         return URL(string: TMDBApiConstants.Endpoints.baseURL)!
     }
@@ -44,9 +44,6 @@ extension TMDBApi: TargetType {
 
     // Request for each API endpoint
     public var task: Task {
-        
-        // Marvel API Hash for authorization
-        let authParams = [TMDBApiConstants.Params.apikey: TMDBApiConstants.Auth.apiKey]
         let language = Locale.preferredLanguages[0]
         
         switch self {
@@ -54,14 +51,16 @@ extension TMDBApi: TargetType {
           return .requestParameters(
             parameters: [
                 TMDBApiConstants.Params.page: page,
-                TMDBApiConstants.Params.language: language] + authParams,
+                TMDBApiConstants.Params.language: language,
+                TMDBApiConstants.Params.apikey: TMDBApiConstants.Auth.apiKey],
             encoding: URLEncoding.default)
             
         case .searchMovie(let query):
           return .requestParameters(
             parameters: [
                 TMDBApiConstants.Params.language: language,
-                TMDBApiConstants.Params.query: query] + authParams,
+                TMDBApiConstants.Params.query: query,
+                TMDBApiConstants.Params.apikey: TMDBApiConstants.Auth.apiKey],
             encoding: URLEncoding.default)
         }
     }
@@ -75,7 +74,4 @@ extension TMDBApi: TargetType {
     public var validationType: ValidationType {
         return .successCodes
     }
-
-
-    
 }
