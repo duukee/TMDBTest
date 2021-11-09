@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9C4826E8273ADCDD000CC8DC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9C4826EA273ADCDD000CC8DC /* Localizable.strings */; };
 		9C4E63EA2736BA7F0097AD60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4E63E92736BA7F0097AD60 /* AppDelegate.swift */; };
 		9C4E63EC2736BA7F0097AD60 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4E63EB2736BA7F0097AD60 /* SceneDelegate.swift */; };
 		9C4E63F32736BA810097AD60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C4E63F22736BA810097AD60 /* Assets.xcassets */; };
@@ -51,6 +52,8 @@
 		229E66E91BDEBECEDFABA06E /* Pods_DXCmoviesApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DXCmoviesApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B4C3F02B7A652BC5564F0DF /* Pods-DXCmoviesApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DXCmoviesApp.debug.xcconfig"; path = "Target Support Files/Pods-DXCmoviesApp/Pods-DXCmoviesApp.debug.xcconfig"; sourceTree = "<group>"; };
 		79AE9B0FBC7D38172222946B /* Pods-DXCmoviesApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DXCmoviesApp.release.xcconfig"; path = "Target Support Files/Pods-DXCmoviesApp/Pods-DXCmoviesApp.release.xcconfig"; sourceTree = "<group>"; };
+		9C4826E9273ADCDD000CC8DC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9C4826EB273ADCFE000CC8DC /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9C4E63E62736BA7F0097AD60 /* DXCmoviesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DXCmoviesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C4E63E92736BA7F0097AD60 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9C4E63EB2736BA7F0097AD60 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -147,6 +150,7 @@
 				9CDBDBE32739AC7100FCF19C /* Gifts */,
 				9C4E63F42736BA810097AD60 /* LaunchScreen.storyboard */,
 				9C4E63F72736BA810097AD60 /* Info.plist */,
+				9C4826EA273ADCDD000CC8DC /* Localizable.strings */,
 			);
 			path = DXCmoviesApp;
 			sourceTree = "<group>";
@@ -336,6 +340,7 @@
 			knownRegions = (
 				en,
 				Base,
+				es,
 			);
 			mainGroup = 9C4E63DD2736BA7F0097AD60;
 			productRefGroup = 9C4E63E72736BA7F0097AD60 /* Products */;
@@ -357,6 +362,7 @@
 				9C4E63F62736BA810097AD60 /* LaunchScreen.storyboard in Resources */,
 				9C4E63F32736BA810097AD60 /* Assets.xcassets in Resources */,
 				9CDBDBDC2739A29300FCF19C /* MovieTableViewCell.xib in Resources */,
+				9C4826E8273ADCDD000CC8DC /* Localizable.strings in Resources */,
 				9CDBDBE22739AC3600FCF19C /* loading.gif in Resources */,
 				9CDBDBD7273999A400FCF19C /* MoviesListViewController.xib in Resources */,
 				9CDBDBE02739AC2200FCF19C /* error.gif in Resources */,
@@ -473,6 +479,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		9C4826EA273ADCDD000CC8DC /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9C4826E9273ADCDD000CC8DC /* en */,
+				9C4826EB273ADCFE000CC8DC /* es */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		9C4E63F42736BA810097AD60 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -488,6 +503,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -549,6 +565,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";

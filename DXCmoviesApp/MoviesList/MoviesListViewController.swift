@@ -21,6 +21,8 @@ extension MoviesListViewController {
 
 class MoviesListViewController: UIViewController, MoviesListViewProtocol, NibOwnerLoadable {
     
+    
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet private weak var tableView: UITableView!
     private var presenter: MoviesListPresenterProtocol
     
@@ -47,6 +49,7 @@ class MoviesListViewController: UIViewController, MoviesListViewProtocol, NibOwn
     
     //MARK: View Configuration
     func configureView() {
+        titleLabel.text = NSLocalizedString("title", comment: "title for list view")
         configureAlertView()
         configureTableView()
     }
@@ -67,7 +70,7 @@ class MoviesListViewController: UIViewController, MoviesListViewProtocol, NibOwn
         tableView.rowHeight = UITableView.automaticDimension
         // Add pull to refresh
         let refreshControl = UIRefreshControl()
-        refreshControl.attributedTitle = NSAttributedString(string: "Refreshing Movies")
+        refreshControl.attributedTitle = NSAttributedString(string: NSLocalizedString("refresh", comment: ""))
         refreshControl.addTarget(self, action: #selector(reloadData), for: .valueChanged)
         tableView.refreshControl = refreshControl
     }
@@ -100,7 +103,7 @@ class MoviesListViewController: UIViewController, MoviesListViewProtocol, NibOwn
             tableView.reloadData()
             tableView.isHidden = true
             alertView.isHidden = false
-            alertLabel.text = "Getting movies..."
+            alertLabel.text = NSLocalizedString("loading_movies", comment: "")
             do {
                 let loadingGif = try UIImage(gifName: "loading.gif")
                 alertIcon.setGifImage(loadingGif)
@@ -112,7 +115,7 @@ class MoviesListViewController: UIViewController, MoviesListViewProtocol, NibOwn
         case .error:
             tableView.isHidden = true
             alertView.isHidden = false
-            alertLabel.text = "Something went wrong!\nTap to try again."
+            alertLabel.text = NSLocalizedString("loading_error", comment: "")
             do {
                 let errorGif = try UIImage(gifName: "error.gif")
                 alertIcon.setGifImage(errorGif)
@@ -166,7 +169,7 @@ extension MoviesListViewController: UITableViewDataSource {
                 presenter.loadMore()
             }
         } else {
-            cell.set(cover: nil, title: "NOTHING TO SHOW", overview: nil, average: 0)
+            cell.set(cover: nil, title: NSLocalizedString("no_data", comment: ""), overview: nil, average: 0)
         }
         return cell
     }

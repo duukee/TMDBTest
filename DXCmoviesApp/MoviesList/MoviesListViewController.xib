@@ -14,6 +14,7 @@
                 <outlet property="alertLabel" destination="1j0-QI-fmN" id="mUf-tR-OFD"/>
                 <outlet property="alertView" destination="5Ze-8f-961" id="gNU-9S-qXl"/>
                 <outlet property="tableView" destination="TVq-yC-sli" id="oUT-C5-eKH"/>
+                <outlet property="titleLabel" destination="AvL-HD-S4H" id="uhQ-Jn-oQZ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -72,7 +73,7 @@
                     </connections>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Top Movies" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AvL-HD-S4H">
-                    <rect key="frame" x="16" y="68" width="178" height="38.5"/>
+                    <rect key="frame" x="16" y="68" width="343" height="38.5"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
                     <color key="textColor" name="SecondaryColor"/>
                     <nil key="highlightedColor"/>
@@ -86,7 +87,7 @@
                 <constraint firstItem="5Ze-8f-961" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="LMJ-gl-Xdq"/>
                 <constraint firstItem="5Ze-8f-961" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Rs6-fY-I5W"/>
                 <constraint firstAttribute="bottom" secondItem="TVq-yC-sli" secondAttribute="bottom" id="Xh7-34-tac"/>
-                <constraint firstAttribute="trailing" secondItem="AvL-HD-S4H" secondAttribute="trailing" constant="181" id="dtC-AM-fQs"/>
+                <constraint firstAttribute="trailing" secondItem="AvL-HD-S4H" secondAttribute="trailing" constant="16" id="dtC-AM-fQs"/>
                 <constraint firstItem="AvL-HD-S4H" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="jgy-ij-rTW"/>
                 <constraint firstItem="AvL-HD-S4H" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="68" id="sXm-4b-NkL"/>
             </constraints>
