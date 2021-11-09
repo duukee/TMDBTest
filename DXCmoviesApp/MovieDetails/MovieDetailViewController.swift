@@ -8,8 +8,16 @@
 //
 
 import UIKit
+import Cosmos
 
 class MovieDetailViewController: UIViewController, MovieDetailViewProtocol {
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var coverImageView: UIImageView!
+    @IBOutlet weak var ratingLabel: UILabel!
+    @IBOutlet weak var ratingView: CosmosView!
+    @IBOutlet weak var overviewLabel: UILabel!
+    @IBOutlet weak var overviewTextView: UITextView!
     
     static func getConfiguredInstance() -> MovieDetailViewController {
         let viewController = MovieDetailViewController(presenter: MovieDetailPresenter())
@@ -34,7 +42,17 @@ class MovieDetailViewController: UIViewController, MovieDetailViewProtocol {
     }
 
     func configureView() {
-        print(presenter.movie)
+        titleLabel.text = presenter.movie?.title
+        if let cover = presenter.movie?.resourceURI {
+            let coverString = TMDBApiConstants.Endpoints.imagesURL + cover
+            let coverURL: URL = URL.init(string: coverString)!
+            coverImageView.af.setImage(withURL: coverURL)
+        }
+        ratingLabel.text = NSLocalizedString("rating", comment: "")
+        ratingView.rating = presenter.movie?.voteAverage ?? 0
+        ratingView.settings.updateOnTouch = false
+        overviewLabel.text = NSLocalizedString("overview", comment: "")
+        overviewTextView.text = presenter.movie?.overview
     }
     
     //MARK: MovieDetailViewProtocol

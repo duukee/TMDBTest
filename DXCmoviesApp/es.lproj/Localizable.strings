@@ -11,3 +11,5 @@
 "loading_movies" = "Obteniendo películas...";
 "loading_error" = "Algo salió mal!\nToca para intentar de nuevo.";
 "no_data" = "NADA QUE MOSTRAR";
+"rating" = "Valoración:";
+"overview" = "Resumen:";
