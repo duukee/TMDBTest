@@ -14,7 +14,6 @@
                 <outlet property="alertLabel" destination="1j0-QI-fmN" id="mUf-tR-OFD"/>
                 <outlet property="alertView" destination="5Ze-8f-961" id="gNU-9S-qXl"/>
                 <outlet property="tableView" destination="TVq-yC-sli" id="oUT-C5-eKH"/>
-                <outlet property="titleLabel" destination="AvL-HD-S4H" id="uhQ-Jn-oQZ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -24,7 +23,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="TVq-yC-sli">
-                    <rect key="frame" x="0.0" y="120" width="375" height="547"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="BeE-tG-S7w"/>
@@ -72,24 +71,15 @@
                         <outletCollection property="gestureRecognizers" destination="ik9-WB-VQK" appends="YES" id="FT9-fI-NPj"/>
                     </connections>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Top Movies" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AvL-HD-S4H">
-                    <rect key="frame" x="16" y="68" width="343" height="38.5"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
-                    <color key="textColor" name="SecondaryColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
             </subviews>
             <color key="backgroundColor" name="PrimaryColor"/>
             <constraints>
                 <constraint firstItem="TVq-yC-sli" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="2u1-h7-Hdl"/>
                 <constraint firstAttribute="trailing" secondItem="TVq-yC-sli" secondAttribute="trailing" id="5PE-gL-LB9"/>
-                <constraint firstItem="TVq-yC-sli" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="120" id="BMB-Gy-ECR"/>
+                <constraint firstItem="TVq-yC-sli" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="BMB-Gy-ECR"/>
                 <constraint firstItem="5Ze-8f-961" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="LMJ-gl-Xdq"/>
                 <constraint firstItem="5Ze-8f-961" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Rs6-fY-I5W"/>
                 <constraint firstAttribute="bottom" secondItem="TVq-yC-sli" secondAttribute="bottom" id="Xh7-34-tac"/>
-                <constraint firstAttribute="trailing" secondItem="AvL-HD-S4H" secondAttribute="trailing" constant="16" id="dtC-AM-fQs"/>
-                <constraint firstItem="AvL-HD-S4H" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="jgy-ij-rTW"/>
-                <constraint firstItem="AvL-HD-S4H" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="68" id="sXm-4b-NkL"/>
             </constraints>
             <point key="canvasLocation" x="-207.19999999999999" y="138.98050974512745"/>
         </view>
@@ -103,9 +93,6 @@
         <image name="loading.gif" width="498" height="280"/>
         <namedColor name="PrimaryColor">
             <color red="0.0039215686274509803" green="0.70588235294117652" blue="0.89411764705882357" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="SecondaryColor">
-            <color red="0.050980392156862744" green="0.14509803921568629" blue="0.24705882352941178" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

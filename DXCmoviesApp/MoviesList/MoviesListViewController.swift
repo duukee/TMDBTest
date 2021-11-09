@@ -21,8 +21,6 @@ extension MoviesListViewController {
 
 class MoviesListViewController: UIViewController, MoviesListViewProtocol, NibOwnerLoadable {
     
-    
-    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet private weak var tableView: UITableView!
     private var presenter: MoviesListPresenterProtocol
     
@@ -46,14 +44,14 @@ class MoviesListViewController: UIViewController, MoviesListViewProtocol, NibOwn
         presenter.view = self
         presenter.prepare()
     }
-    
+        
     //MARK: View Configuration
     func configureView() {
-        titleLabel.text = NSLocalizedString("title", comment: "title for list view")
         configureAlertView()
+        configureSearcher()
         configureTableView()
     }
-    
+        
     func configureAlertView(){
         alertView.layer.shadowColor = UIColor.gray.cgColor
         alertView.layer.shadowOpacity = 0.7
@@ -68,6 +66,7 @@ class MoviesListViewController: UIViewController, MoviesListViewProtocol, NibOwn
         tableView.register(cellType: MovieTableViewCell.self)
         tableView.estimatedRowHeight = 160
         tableView.rowHeight = UITableView.automaticDimension
+        tableView.keyboardDismissMode = .onDrag
         // Add pull to refresh
         let refreshControl = UIRefreshControl()
         refreshControl.attributedTitle = NSAttributedString(string: NSLocalizedString("refresh", comment: ""))
@@ -175,5 +174,35 @@ extension MoviesListViewController: UITableViewDataSource {
             cell.set(cover: nil, title: NSLocalizedString("no_data", comment: ""), overview: nil, average: 0)
         }
         return cell
+    }
+}
+
+
+extension MoviesListViewController: UISearchResultsUpdating, UISearchBarDelegate {
+    
+    func configureSearcher() {
+        navigationItem.title = NSLocalizedString("title", comment: "")
+        let searchController = UISearchController()
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.delegate = self
+        navigationItem.searchController = searchController
+        navigationItem.searchController?.searchBar.placeholder = NSLocalizedString("search_placeholder", comment: "")
+    }
+
+    //MARK: UISearchResultsUpdating
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let text = searchController.searchBar.text else {
+            return
+        }
+        print(text)
+        
+    }
+
+    //MARK: UISearchBarDelegate
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        if let query = searchBar.text {
+            presenter.searchMovie(query: query)
+        }
+        searchBar.endEditing(true)
     }
 }
