@@ -17,6 +17,7 @@ protocol MoviesListPresenterProtocol: AnyObject {
     func loadMovies(page: Int)
     func reloadMovies()
     func loadMore()
+    func searchMovie(query: String)
     var movies: [Movie] { get set }
 }
 
@@ -68,5 +69,34 @@ class MoviesListPresenter: MoviesListPresenterProtocol {
     
     func loadMore() {
         loadMovies(page: page)
+    }
+    
+    func searchMovie(query: String) {
+        
+        movies.removeAll()
+        page = 1
+        
+        let provider = MoyaProvider<TMDBApi>()
+        provider.request(.searchMovie(query: query, page: page)) { [weak self] result in
+        guard let self = self else { return }
+        switch result {
+        case .success(let response):
+            do {
+                //print(try response.mapJSON())
+                let movies: [Movie] = try response.map(ListResponse<Movie>.self).results
+                //print(movies)
+                self.movies.append(contentsOf: movies)
+                self.view?.updateViewState(with: .ready)
+                self.page += 1
+            } catch {
+                self.view?.updateViewState(with: .error)
+                print("map error")
+            }
+        case .failure:
+            self.view?.updateViewState(with: .error)
+            print("request error")
+            }
+        }
+
     }
 }
