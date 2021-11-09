@@ -9,8 +9,8 @@ import Foundation
 import Moya
 
 public enum TMDBApi {
-    case popularMovies(page:Int)
-    case movieDetails(id:Int)
+    case popularMovies(page: Int)
+    case searchMovie(query: String)
 }
 
 extension TMDBApi: TargetType {
@@ -24,7 +24,7 @@ extension TMDBApi: TargetType {
     public var path: String {
         switch self {
         case .popularMovies: return TMDBApiConstants.Endpoints.popularMovies
-        case .movieDetails: return TMDBApiConstants.Endpoints.movieDetails
+        case .searchMovie: return TMDBApiConstants.Endpoints.searchMovie
         }
     }
     
@@ -32,7 +32,7 @@ extension TMDBApi: TargetType {
     public var method: Moya.Method {
         switch self {
         case .popularMovies: return .get
-        case .movieDetails: return .get
+        case .searchMovie: return .get
         }
     }
 
@@ -57,11 +57,11 @@ extension TMDBApi: TargetType {
                 TMDBApiConstants.Params.language: language] + authParams,
             encoding: URLEncoding.default)
             
-        case .movieDetails(let movieId):
+        case .searchMovie(let query):
           return .requestParameters(
             parameters: [
                 TMDBApiConstants.Params.language: language,
-                TMDBApiConstants.Params.movieId: movieId] + authParams,
+                TMDBApiConstants.Params.query: query] + authParams,
             encoding: URLEncoding.default)
         }
     }
