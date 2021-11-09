@@ -73,7 +73,6 @@
                     <constraint firstItem="q5g-Cp-Ked" firstAttribute="top" secondItem="DYm-5B-oYE" secondAttribute="top" id="2VJ-W4-kAf"/>
                     <constraint firstItem="jZP-2C-0sH" firstAttribute="top" secondItem="a5e-D4-YMa" secondAttribute="bottom" constant="8" symbolic="YES" id="3Lj-c5-dHW"/>
                     <constraint firstAttribute="trailing" secondItem="q5g-Cp-Ked" secondAttribute="trailing" constant="20" id="3w3-dE-ygv"/>
-                    <constraint firstAttribute="trailing" secondItem="jZP-2C-0sH" secondAttribute="trailing" constant="20" id="6CU-yd-lyz"/>
                     <constraint firstItem="jZP-2C-0sH" firstAttribute="leading" secondItem="a5e-D4-YMa" secondAttribute="leading" id="7D4-hw-NND"/>
                     <constraint firstItem="q5g-Cp-Ked" firstAttribute="leading" secondItem="DYm-5B-oYE" secondAttribute="trailing" constant="10" id="CiO-im-Qfq"/>
                     <constraint firstItem="a5e-D4-YMa" firstAttribute="leading" secondItem="q5g-Cp-Ked" secondAttribute="leading" id="OAg-GD-i33"/>
@@ -81,7 +80,6 @@
                     <constraint firstItem="jZP-2C-0sH" firstAttribute="trailing" secondItem="Dcj-4g-0Is" secondAttribute="trailingMargin" id="T4p-he-qT5"/>
                     <constraint firstAttribute="bottomMargin" secondItem="jZP-2C-0sH" secondAttribute="bottom" constant="25" id="WV9-mc-hjU"/>
                     <constraint firstItem="a5e-D4-YMa" firstAttribute="top" secondItem="q5g-Cp-Ked" secondAttribute="bottom" constant="8.5" id="kQg-a8-qPd"/>
-                    <constraint firstItem="jZP-2C-0sH" firstAttribute="leading" secondItem="DYm-5B-oYE" secondAttribute="trailing" constant="10" id="mPj-Xw-583"/>
                     <constraint firstItem="DYm-5B-oYE" firstAttribute="top" secondItem="Dcj-4g-0Is" secondAttribute="top" constant="20" symbolic="YES" id="pyz-Xu-Bxb"/>
                 </constraints>
             </tableViewCellContentView>
