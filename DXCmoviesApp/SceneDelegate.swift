@@ -20,7 +20,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
       
         let window = UIWindow(windowScene: windowScene)
         let vc: MoviesListViewController = MoviesListViewController.getConfiguredInstance()
-        window.rootViewController = vc // initial view controller.
+        let nvc = UINavigationController(rootViewController: vc)
+        nvc.navigationBar.prefersLargeTitles = true
+        nvc.navigationBar.backgroundColor = UIColor(named: "PrimaryColor")
+        window.rootViewController = nvc // initial view controller.
         window.makeKeyAndVisible()
         self.window = window
     }
