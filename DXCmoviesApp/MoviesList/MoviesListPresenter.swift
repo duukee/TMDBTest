@@ -14,12 +14,10 @@ import Moya
 protocol MoviesListPresenterProtocol: AnyObject {
 	var view: MoviesListViewProtocol? { get set }
     func viewDidLoad()
-    
     func loadMovies(page: Int)
     func reloadMovies()
     func loadMore()
     var movies: [Movie] { get set }
-
 }
 
 class MoviesListPresenter: MoviesListPresenterProtocol {
@@ -39,7 +37,7 @@ class MoviesListPresenter: MoviesListPresenterProtocol {
         switch result {
         case .success(let response):
             do {
-                print(try response.mapJSON())
+                //print(try response.mapJSON())
                 let movies: [Movie] = try response.map(ListResponse<Movie>.self).results
                 //print(movies)
                 self.movies.append(contentsOf: movies)
@@ -60,12 +58,15 @@ class MoviesListPresenter: MoviesListPresenterProtocol {
         movies.removeAll()
         page = 1
         view?.updateViewState(with: .loading)
-        loadMovies(page: page)
+        
+        //TODO: remove delay -> added to test the alert view 
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2), execute: {
+            self.loadMovies(page: self.page)
+        })
+
     }
     
     func loadMore() {
         loadMovies(page: page)
     }
-
-    
 }

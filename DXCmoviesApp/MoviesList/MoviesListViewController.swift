@@ -22,9 +22,7 @@ extension MoviesListViewController {
 class MoviesListViewController: UIViewController, MoviesListViewProtocol, NibOwnerLoadable {
     
     @IBOutlet private weak var tableView: UITableView!
-    
     private var presenter: MoviesListPresenterProtocol
-
     
     static func getConfiguredInstance() -> MoviesListViewController {
         let viewController = MoviesListViewController(presenter: MoviesListPresenter())

@@ -50,7 +50,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" red="0.94034355879999998" green="0.9726920724" blue="0.99117392299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <gestureRecognizers/>
                     <constraints>
                         <constraint firstItem="Hq8-Fs-4yO" firstAttribute="leading" secondItem="5Ze-8f-961" secondAttribute="leading" constant="45" id="2wl-Pl-ZaN"/>
