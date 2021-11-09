@@ -10,7 +10,7 @@ import Moya
 
 public enum TMDBApi {
     case popularMovies(page: Int)
-    case searchMovie(query: String)
+    case searchMovie(query: String, page: Int)
 }
 
 extension TMDBApi: TargetType {
@@ -55,9 +55,10 @@ extension TMDBApi: TargetType {
                 TMDBApiConstants.Params.apikey: TMDBApiConstants.Auth.apiKey],
             encoding: URLEncoding.default)
             
-        case .searchMovie(let query):
+        case .searchMovie(let query, let page):
           return .requestParameters(
             parameters: [
+                TMDBApiConstants.Params.page: page,
                 TMDBApiConstants.Params.language: language,
                 TMDBApiConstants.Params.query: query,
                 TMDBApiConstants.Params.apikey: TMDBApiConstants.Auth.apiKey],
