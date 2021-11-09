@@ -17,15 +17,14 @@ struct TMDBApiConstants {
         static let baseURL = "https://api.themoviedb.org/3"
         static let imagesURL = "https://image.tmdb.org/t/p/w500"
         static let popularMovies = "/movie/popular"
-        static let movieDetails = "/movie/%@"
+        static let searchMovie = "/search/movie"
     }
 
     enum Params {
         static let apikey = "api_key"
-        static let movieId = "movie_id"
         static let page = "page"
         static let language = "language" //Default en-US
-
+        static let query = "query"
     }
             
     enum SessionConfiguration {

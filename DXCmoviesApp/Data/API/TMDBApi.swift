@@ -9,13 +9,13 @@ import Foundation
 import Moya
 
 public enum TMDBApi {
-    case popularMovies(page:Int)
-    case movieDetails(id:Int)
+    case popularMovies(page: Int)
+    case searchMovie(query: String)
 }
 
 extension TMDBApi: TargetType {
     
-    // Base Marvel Service URL
+    // Base Service URL
     public var baseURL: URL {
         return URL(string: TMDBApiConstants.Endpoints.baseURL)!
     }
@@ -24,7 +24,7 @@ extension TMDBApi: TargetType {
     public var path: String {
         switch self {
         case .popularMovies: return TMDBApiConstants.Endpoints.popularMovies
-        case .movieDetails: return TMDBApiConstants.Endpoints.movieDetails
+        case .searchMovie: return TMDBApiConstants.Endpoints.searchMovie
         }
     }
     
@@ -32,7 +32,7 @@ extension TMDBApi: TargetType {
     public var method: Moya.Method {
         switch self {
         case .popularMovies: return .get
-        case .movieDetails: return .get
+        case .searchMovie: return .get
         }
     }
 
@@ -44,9 +44,6 @@ extension TMDBApi: TargetType {
 
     // Request for each API endpoint
     public var task: Task {
-        
-        // Marvel API Hash for authorization
-        let authParams = [TMDBApiConstants.Params.apikey: TMDBApiConstants.Auth.apiKey]
         let language = Locale.preferredLanguages[0]
         
         switch self {
@@ -54,14 +51,16 @@ extension TMDBApi: TargetType {
           return .requestParameters(
             parameters: [
                 TMDBApiConstants.Params.page: page,
-                TMDBApiConstants.Params.language: language] + authParams,
+                TMDBApiConstants.Params.language: language,
+                TMDBApiConstants.Params.apikey: TMDBApiConstants.Auth.apiKey],
             encoding: URLEncoding.default)
             
-        case .movieDetails(let movieId):
+        case .searchMovie(let query):
           return .requestParameters(
             parameters: [
                 TMDBApiConstants.Params.language: language,
-                TMDBApiConstants.Params.movieId: movieId] + authParams,
+                TMDBApiConstants.Params.query: query,
+                TMDBApiConstants.Params.apikey: TMDBApiConstants.Auth.apiKey],
             encoding: URLEncoding.default)
         }
     }
@@ -75,7 +74,4 @@ extension TMDBApi: TargetType {
     public var validationType: ValidationType {
         return .successCodes
     }
-
-
-    
 }
