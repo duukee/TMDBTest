@@ -41,10 +41,10 @@
                                 <constraint firstAttribute="width" secondItem="Hq8-Fs-4yO" secondAttribute="height" multiplier="1:1" id="mPN-ec-R3N"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1j0-QI-fmN">
-                            <rect key="frame" x="8" y="206" width="264" height="66"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1j0-QI-fmN">
+                            <rect key="frame" x="8" y="192" width="264" height="80"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="66" id="QwO-id-sRB"/>
+                                <constraint firstAttribute="height" constant="80" id="QwO-id-sRB"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
