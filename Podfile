@@ -10,7 +10,7 @@ def common_pods
     use_frameworks!
 
     ### Network
-    pod 'ReachabilitySwift', '~> 5.0'
+    #pod 'ReachabilitySwift', '~> 5.0'
     pod 'Moya', '~> 15.0'
     pod 'AlamofireImage', '~> 4'
 
