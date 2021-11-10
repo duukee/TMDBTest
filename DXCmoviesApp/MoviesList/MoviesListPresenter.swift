@@ -38,9 +38,7 @@ class MoviesListPresenter: MoviesListPresenterProtocol {
         switch result {
         case .success(let response):
             do {
-                //print(try response.mapJSON())
                 let movies: [Movie] = try response.map(ListResponse<Movie>.self).results
-                //print(movies)
                 self.movies.append(contentsOf: movies)
                 self.view?.updateViewState(with: .ready)
                 self.page += 1
@@ -59,12 +57,10 @@ class MoviesListPresenter: MoviesListPresenterProtocol {
         movies.removeAll()
         page = 1
         view?.updateViewState(with: .loading)
-        
-        //TODO: remove delay -> added to test the alert view 
+        //TODO: remove delay -> added to test the alert view
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2), execute: {
             self.loadMovies(page: self.page)
         })
-
     }
     
     func loadMore() {
@@ -72,7 +68,6 @@ class MoviesListPresenter: MoviesListPresenterProtocol {
     }
     
     func searchMovie(query: String) {
-        
         movies.removeAll()
         page = 1
         
@@ -82,9 +77,7 @@ class MoviesListPresenter: MoviesListPresenterProtocol {
         switch result {
         case .success(let response):
             do {
-                //print(try response.mapJSON())
                 let movies: [Movie] = try response.map(ListResponse<Movie>.self).results
-                //print(movies)
                 self.movies.append(contentsOf: movies)
                 self.view?.updateViewState(with: .ready)
                 self.page += 1
