@@ -61,6 +61,7 @@ extension TMDBApi: TargetType {
                 TMDBApiConstants.Params.page: page,
                 TMDBApiConstants.Params.language: language,
                 TMDBApiConstants.Params.query: query,
+                TMDBApiConstants.Params.adult_content: false,
                 TMDBApiConstants.Params.apikey: TMDBApiConstants.Auth.apiKey],
             encoding: URLEncoding.default)
         }
