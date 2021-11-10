@@ -16,13 +16,12 @@ extension MoviesListViewController {
         case loading
         case ready
         case error
+        case searching
     }
 }
 
 class MoviesListViewController: UIViewController, MoviesListViewProtocol, NibOwnerLoadable {
     
-    
-    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet private weak var tableView: UITableView!
     private var presenter: MoviesListPresenterProtocol
     
@@ -46,14 +45,14 @@ class MoviesListViewController: UIViewController, MoviesListViewProtocol, NibOwn
         presenter.view = self
         presenter.prepare()
     }
-    
+        
     //MARK: View Configuration
     func configureView() {
-        titleLabel.text = NSLocalizedString("title", comment: "title for list view")
         configureAlertView()
+        configureSearcher()
         configureTableView()
     }
-    
+        
     func configureAlertView(){
         alertView.layer.shadowColor = UIColor.gray.cgColor
         alertView.layer.shadowOpacity = 0.7
@@ -68,6 +67,7 @@ class MoviesListViewController: UIViewController, MoviesListViewProtocol, NibOwn
         tableView.register(cellType: MovieTableViewCell.self)
         tableView.estimatedRowHeight = 160
         tableView.rowHeight = UITableView.automaticDimension
+        tableView.keyboardDismissMode = .onDrag
         // Add pull to refresh
         let refreshControl = UIRefreshControl()
         refreshControl.attributedTitle = NSAttributedString(string: NSLocalizedString("refresh", comment: ""))
@@ -123,6 +123,10 @@ class MoviesListViewController: UIViewController, MoviesListViewProtocol, NibOwn
                 let errorImage = UIImage(named: "errorIcon.jpeg")
                 alertIcon.image = errorImage
             }
+        case .searching:
+            tableView.reloadData()
+            tableView.isHidden = false
+            alertView.isHidden = true
         }
       }
     }
@@ -169,11 +173,60 @@ extension MoviesListViewController: UITableViewDataSource {
             cell.set(cover: presenter.movies[indexPath.row].resourceURI, title: presenter.movies[indexPath.row].title, overview: presenter.movies[indexPath.row].overview, average: presenter.movies[indexPath.row].voteAverage)
             // load more movies when there are 10 rows left to reach the end
             if indexPath.row == presenter.movies.count - 10 {
-                presenter.loadMore()
+                if state == .ready {
+                    presenter.loadMore()
+                } else if state == .searching {
+                    presenter.searchMore()
+                }
             }
         } else {
             cell.set(cover: nil, title: NSLocalizedString("no_data", comment: ""), overview: nil, average: 0)
         }
         return cell
     }
+}
+
+
+extension MoviesListViewController: UISearchResultsUpdating, UISearchBarDelegate {
+    
+    func configureSearcher() {
+        navigationItem.title = NSLocalizedString("title", comment: "")
+        let searchController = UISearchController()
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.delegate = self
+        navigationItem.searchController = searchController
+        navigationItem.searchController?.searchBar.placeholder = NSLocalizedString("search_placeholder", comment: "")
+    }
+
+    //MARK: UISearchResultsUpdating
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let text = searchController.searchBar.text else {
+            return
+        }
+        print(text)
+        /*
+         * NOTE: Here we can do search char by char, but this has been avoided so as not to make many API requests.
+         */
+    }
+
+    //MARK: UISearchBarDelegate
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if let query = searchBar.text {
+            presenter.prepareForSearches()
+            presenter.searchMovie(query: query)
+        }
+        searchBar.endEditing(true)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        presenter.prepare()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+            presenter.prepareForSearches()
+        }
+    }
+
+    
 }

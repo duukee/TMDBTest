@@ -25,6 +25,7 @@ struct TMDBApiConstants {
         static let page = "page"
         static let language = "language" //Default en-US
         static let query = "query"
+        static let adult_content = "include_adult"
     }
             
     enum SessionConfiguration {

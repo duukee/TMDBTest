@@ -7,6 +7,7 @@
 */
 
 "title" = "Top Movies";
+"search_placeholder" = "Search movies";
 "refresh" = "Refreshing Movies";
 "loading_movies" = "Getting movies...";
 "loading_error" = "Something went wrong!\nTap to try again.";
