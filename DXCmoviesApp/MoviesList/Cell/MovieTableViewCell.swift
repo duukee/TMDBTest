@@ -35,6 +35,10 @@ class MovieTableViewCell: UITableViewCell, NibReusable {
         overviewLabel.sizeToFit()
         overviewLabel.numberOfLines = 0
         averageView.rating = average
+        averageView.isHidden = false
+        if average == 0 {
+            averageView.isHidden = true
+        }
         averageView.settings.updateOnTouch = false
         
         if let cover = cover {
