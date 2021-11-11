@@ -25,6 +25,7 @@ protocol MoviesListPresenterProtocol: AnyObject {
 
 class MoviesListPresenter: MoviesListPresenterProtocol {
     weak var view: MoviesListViewProtocol?
+    private let dataSource = MoviesDataSource()
     var movies: [Movie] = []
     var page: Int = 1
     var searchQuery: String?
@@ -33,26 +34,16 @@ class MoviesListPresenter: MoviesListPresenterProtocol {
     func prepare() {
         reloadMovies()
     }
-    
+        
     //MARK: Load Movies
     func loadMovies(){
-        let provider = MoyaProvider<TMDBApi>()
-        provider.request(.popularMovies(page: page)) { [weak self] result in
-        guard let self = self else { return }
-        switch result {
-        case .success(let response):
-            do {
-                let movies: [Movie] = try response.map(ListResponse<Movie>.self).results
-                self.movies.append(contentsOf: movies)
+        dataSource.getMovies(page: page) { movies, errorMessage in
+            if let newMovies = movies {
+                self.movies.append(contentsOf: newMovies)
                 self.view?.updateViewState(with: .ready)
                 self.page += 1
-            } catch {
+            } else {
                 self.view?.updateViewState(with: .error)
-                print("map error")
-            }
-        case .failure:
-            self.view?.updateViewState(with: .error)
-            print("request error")
             }
         }
     }
@@ -77,23 +68,13 @@ class MoviesListPresenter: MoviesListPresenterProtocol {
     
     func searchMovie(query: String) {
         searchQuery = query
-        let provider = MoyaProvider<TMDBApi>()
-        provider.request(.searchMovie(query: query, page: searchPage)) { [weak self] result in
-        guard let self = self else { return }
-        switch result {
-        case .success(let response):
-            do {
-                let movies: [Movie] = try response.map(ListResponse<Movie>.self).results
-                self.movies.append(contentsOf: movies)
+        dataSource.searchMovie(query: query, page: searchPage) { movies, errorMessage in
+            if let newMovies = movies {
+                self.movies.append(contentsOf: newMovies)
                 self.view?.updateViewState(with: .searching)
                 self.searchPage += 1
-            } catch {
+            } else {
                 self.view?.updateViewState(with: .error)
-                print("map error")
-            }
-        case .failure:
-            self.view?.updateViewState(with: .error)
-            print("request error")
             }
         }
     }
