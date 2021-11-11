@@ -45,6 +45,10 @@ class MovieTableViewCell: UITableViewCell, NibReusable {
             let coverString = TMDBApiConstants.Endpoints.imagesURL + cover
             let coverURL: URL = URL.init(string: coverString)!
             coverImageView.af.setImage(withURL: coverURL)
+            coverImageView.backgroundColor = .clear
+        } else {
+            coverImageView.image = UIImage.init(named: "placeholder")
+            coverImageView.backgroundColor = .white
         }
     }
 
