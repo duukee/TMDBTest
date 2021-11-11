@@ -8,12 +8,12 @@
 import Foundation
 import Moya
 
-public enum TMDBApi {
+public enum TMDBApiDefinition {
     case popularMovies(page: Int)
     case searchMovie(query: String, page: Int)
 }
 
-extension TMDBApi: TargetType {
+extension TMDBApiDefinition: TargetType {
     
     // Base Service URL
     public var baseURL: URL {

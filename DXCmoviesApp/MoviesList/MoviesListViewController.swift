@@ -77,7 +77,9 @@ class MoviesListViewController: UIViewController, MoviesListViewProtocol, NibOwn
 
     //Pull to refresh
     @objc func reloadData(refreshControl: UIRefreshControl){
-        presenter.reloadMovies()
+        if state == .ready {
+            presenter.reloadMovies()
+        }
         refreshControl.endRefreshing()
     }
     
